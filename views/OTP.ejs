@@ -107,7 +107,7 @@
     <p>Time left to resend: <span id="timer">30</span> seconds</p>
         <h2>Enter your 6-digit OTP</h2>
         <form id="otpForm" action="/authCheck" method="post">
-            <input type="number" id="otpInput" maxlength="6" pattern="\d{6}" title="Enter a 6-digit OTP" required name="enteredOTP">
+            <input type="number" id="otpInput" maxlength="6" pattern="\d{6}" title="Enter a 6-digit OTP" required name="enteredOTP" oninput="validateOTP(this)">
             <br>
             <button type="submit">Verify OTP</button>
         </form>
@@ -142,6 +142,21 @@
                 document.getElementById('message').textContent = 'Invalid OTP. Please try again.';
             }
         });
+        function validateOTP(input) {
+    let otp = input.value;
+
+    // Remove any non-digit characters
+    otp = otp.replace(/\D/g, '');
+
+    // Limit the input to 6 digits
+    if (otp.length > 6) {
+        otp = otp.slice(0, 6);
+    }
+
+    // Update the input value
+    input.value = otp;
+}
+
     </script>
 </body>
 </html>
