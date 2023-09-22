@@ -149,7 +149,9 @@ app.post('/register', (req, res) => {
 
         } else {
             console.log('Email sent:', info.response);
-            res.render("OTP.ejs");
+            res.render("OTP.ejs", {
+                expectedOTP: verificationtoken
+            });
         }
     });
 });
@@ -260,14 +262,16 @@ app.get('/hehe', (req, res) => {
             res.redirect("/hehe");
         } else {
             console.log('Email sent:', info.response);
-            res.render("OTP.ejs");
+            res.render("OTP.ejs", {
+                expectedOTP: verificationtoken
+            });
         }
     });
 });
 
 
 
-app.post("/authCheck", (req, res) => {
+app.get("/authCheck", (req, res) => {
     const email = Array.from(emailVerificationTokens.keys()).find(
         (key) => emailVerificationTokens.get(key) === parseInt(verificationtoken)
     );

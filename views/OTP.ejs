@@ -126,6 +126,22 @@
             // Submit the form immediately
             // document.getElementById("verificationForm").submit();
         });
+        const expectedOTP = '<%= expectedOTP %>';
+
+        document.getElementById('otpForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const enteredOTP = document.getElementById('otpInput').value;
+
+            if (enteredOTP === expectedOTP) {
+                document.getElementById('message').textContent = 'OTP is valid. Redirecting...';
+
+                // Redirect to another page
+                window.location.href = '/authCheck'; // Replace with the URL of the page you want to redirect to
+            } else {
+                document.getElementById('message').textContent = 'Invalid OTP. Please try again.';
+            }
+        });
     </script>
 </body>
 </html>
