@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auth</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: lightpink;
+        }
+        .container {
+            padding: 10px;
+            max-width: 300px;
+            margin: auto;
+            margin-top: 180px;
+        }
+        input {
+            font-size: 20px;
+            padding: 5px;
+        }
+        button {
+            background-color: green;
+            border: none;
+            border-radius: 5px;
+            margin: auto;
+            margin-top: 10px;
+            font-size: 20px;
+            padding: 5px;
+            color: white;
+        }
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter your email to verify</h1>
+        <form action="/register" method="post" id="verificationForm">
+            <input type="email" name="email" placeholder="Email">
+            <!-- Change the button text to "Submit" -->
+            <button type="button" id="submitButton">Submit</button>
+        </form>
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Update the button ID to "submitButton"
+        document.getElementById("submitButton").addEventListener("click", function() {
+            // Show the loading overlay
+            document.getElementById("loadingOverlay").style.display = "flex";
+            // Submit the form immediately
+            document.getElementById("verificationForm").submit();
+        });
+    </script>
+</body>
+</html>
