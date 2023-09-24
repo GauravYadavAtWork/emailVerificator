@@ -80,17 +80,14 @@
         </div>
     </div>
     <script>
-    document.getElementById("verificationForm").addEventListener("submit", function(event) {
-        // Prevent the form from submitting normally
-        event.preventDefault();
-
-        // Show the loading overlay
-        document.getElementById("loadingOverlay").style.display = "flex";
-
-        // Submit the form
-        this.submit();
-    });
-</script>
+        // Update the button ID to "submitButton"
+        document.getElementById("submitButton").addEventListener("click", function() {
+            // Show the loading overlay
+            document.getElementById("loadingOverlay").style.display = "flex";
+            // Submit the form immediately
+            //document.getElementById("verificationForm").submit();
+        });
+    </script>
 
 </body>
 </html>
